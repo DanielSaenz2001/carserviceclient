@@ -1,5 +1,13 @@
 <mat-toolbar color="primary">
-  <span>Welcome to {{title}}!</span>
+  <span>Bienvenidos a {{title}}!</span>
+  <div style="    margin: auto;">
+    <button mat-button [matMenuTriggerFor]="afterMenu">Enlances</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button mat-menu-item routerLink="/due-list">Lista de dueños</button>
+      <button mat-menu-item routerLink="/car-list">Lista de carros</button>
+      <button mat-menu-item routerLink="/car-due-list">Lista de dueños con carros</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

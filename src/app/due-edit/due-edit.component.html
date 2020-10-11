@@ -1,0 +1,46 @@
+<mat-card>
+    <form #duesForm="ngForm" (ngSubmit)="save(duesForm.value)">
+      <mat-card-header>
+
+        <mat-card-title><h2>{{dues.name ? 'Editar' : 'Agregar'}} Carro</h2></mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <input type="hidden" name="href" [(ngModel)]="dues.href">
+
+        <mat-form-field>
+          <input matInput placeholder="Nombre del dueño" [(ngModel)]="dues.name"
+                 required name="name" #name>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Profesión del dueño" [(ngModel)]="dues.profession"
+                   required name="profession" #profession>
+          </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="DNI del dueño" [(ngModel)]="dues.dni"
+                 required name="dni" #dni>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="!duesForm.form.valid">Save</button>
+        <button mat-raised-button color="secondary" (click)="remove(dues.href,id)"
+                *ngIf="dues.href" type="button">Delete</button>
+        <a mat-button routerLink="/due-list">Cancel</a>
+
+      </mat-card-actions>
+
+      <mat-card-footer>
+        <div class="giphy">
+          <img src="{{dues.giphyUrl}}" alt="{{dues.name}}">
+        </div>
+      </mat-card-footer>
+    </form>
+  </mat-card>

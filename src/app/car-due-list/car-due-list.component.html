@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>Lista de carros con dueños</mat-card-title>
+    <mat-card-content>
+      <mat-list *ngFor="let car of cars">
+        <mat-list-item *ngIf="this.car.ownerDni !== null">
+            <img mat-list-avatar src="{{car.giphyUrl_due}}" alt="{{car.name_due}}">
+            <h3 mat-line>
+                <a mat-button><b>{{car.name_due}}</b></a>
+            </h3>   
+            <br>
+            <h3 mat-line>
+                <a mat-button><b>Vehiculo: </b>{{car.name}}</a>
+            </h3>
+                  
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+</mat-card>
