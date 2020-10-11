@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class CarService {
   public API = '//thawing-chamber-47973.herokuapp.com';
-  public CAR_API = this.API + '/cars';
+  public DUE_API = this.API + '/cars';
 
   constructor(private http: HttpClient) {
   }
@@ -15,15 +15,15 @@ export class CarService {
   }
 
   get(id: string) {
-    return this.http.get(this.CAR_API + '/' + id);
+    return this.http.get(this.DUE_API + '/' + id);
   }
 
-  save(car: any): Observable<any> {
+  save(due: any): Observable<any> {
     let result: Observable<Object>;
-    if (car['href']) {
-      result = this.http.put(car.href, car);
+    if (due['href']) {
+      result = this.http.put(due.href, due);
     } else {
-      result = this.http.post(this.CAR_API, car);
+      result = this.http.post(this.DUE_API, due);
     }
     return result;
   }
