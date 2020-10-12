@@ -1,15 +1,18 @@
 <mat-card>
     <mat-card-title>Lista de carros</mat-card-title>
     <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let due of dues">
-          <img mat-list-avatar src="{{due.giphyUrl}}" alt="{{due.name}}">
+      <mat-selection-list #due (selectionChange)="onGroupsChange(due.selectedOptions.selected)">
+        <mat-list-option *ngFor="let du of dues" [value]="du">
+          <img mat-list-avatar src="{{du.giphyUrl}}" alt="{{du.name}}">
           <h3 mat-line>
-            <a mat-button [routerLink]="['/due-edit', due.id]">{{due.name}}</a>
+            <a mat-button [routerLink]="['/due-edit', du.id]">{{du.name}}</a>
           </h3>
-        </mat-list-item>
-      </mat-list>
+        </mat-list-option>
+      </mat-selection-list>
     </mat-card-content>
-  
     <button mat-fab color="primary" [routerLink]="['/due-add']">Add</button>
+    <button mat-fab color="warn" (click)="eliminar()">Eliminar</button>
   </mat-card>
+  <p>
+    Options selected: {{due.selectedOptions.selected.length}}
+  </p>
